@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Hangman — Word Guessing Game</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Hangman home"><span class="brand-icon">H</span> HANGMAN</a>
+      <span class="pill"><span class="status-dot"></span> WORD GAME</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">THINK • GUESS • WIN</p>
+      <h1>Find the hidden <span>word.</span></h1>
+      <p class="subtitle">Guess one letter at a time. You have six chances to save the day.</p>
+    </section>
+
+    <section class="game-card" aria-label="Hangman game">
+      <div class="game-main">
+        <div class="drawing-panel">
+          <div class="panel-label">HANGMAN</div>
+          <svg id="hangman-drawing" viewBox="0 0 220 190" role="img" aria-label="Hangman drawing">
+            <g class="gallows" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+              <path d="M35 166 H185 M62 166 V22 H133 V39"/>
+            </g>
+            <g id="person" fill="none" stroke="#F5B942" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <circle class="body-part" data-part="1" cx="133" cy="54" r="15" />
+              <path class="body-part" data-part="2" d="M133 69 V111"/>
+              <path class="body-part" data-part="3" d="M133 80 L108 99"/>
+              <path class="body-part" data-part="4" d="M133 80 L158 99"/>
+              <path class="body-part" data-part="5" d="M133 111 L111 141"/>
+              <path class="body-part" data-part="6" d="M133 111 L155 141"/>
+            </g>
+          </svg>
+          <div class="attempts"><span id="attempts-number">0</span> / 6 wrong guesses</div>
+          <div class="attempt-track"><span id="attempt-track-fill"></span></div>
+        </div>
+
+        <div class="play-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="panel-label">MYSTERY WORD</p>
+              <h2>What could it be?</h2>
+            </div>
+            <span class="word-count" id="word-count">7 letters</span>
+          </div>
+
+          <div class="word-display" id="word-display" aria-label="Hidden word">_ _ _ _ _ _ _</div>
+          <p id="game-message" class="game-message" role="status" aria-live="polite">Choose a letter to begin.</p>
+
+          <div class="letters-heading">
+            <span class="panel-label">CHOOSE A LETTER</span>
+            <span id="letters-count">0 / 26 used</span>
+          </div>
+          <div class="keyboard" id="keyboard" aria-label="Letter choices"></div>
+
+          <div class="used-letters">
+            <span class="panel-label">GUESSED LETTERS</span>
+            <span id="guessed-letters">None yet</span>
+          </div>
+          <button class="new-game-button" id="new-game-button" type="button">
+            <span aria-hidden="true">↻</span> New Game
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Built with Python, Flask, HTML, CSS &amp; JavaScript</span>
+      <span>Keep guessing. Keep learning. ✦</span>
+    </footer>
+  </main>
+</body>
+</html>
